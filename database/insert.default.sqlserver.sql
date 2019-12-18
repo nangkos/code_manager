@@ -5,15 +5,14 @@ USE DOTWARE
 GO
 
 
-INSERT USERS (user_name) VALUES (N'시스템'); -- system
-INSERT USERS (user_name) VALUES (N'관리자'); -- admin
+INSERT USERS (user_name) VALUES (N'시스템'); -- 1, system
+INSERT USERS (user_name) VALUES (N'관리자'); -- 2, admin
 
 /*
 UPDATE USERS SET user_name = N'시스템' WHERE user_id = 1;
 UPDATE USERS SET user_name = N'관리자' WHERE user_id = 2;
 */
 
-SELECT * FROM USERS;
 
 INSERT CODE_GROUPS ( group_name, created_by, modified_by, group_value, display_order ) 
 VALUES (N'코드관리', 1, 1, N'ROOT', 1);
@@ -152,7 +151,7 @@ SET @id = @@IDENTITY;
 
 -- 시스템코드 > 로그인방식
 INSERT CODE_GROUPS ( group_name, created_by, modified_by, group_value, display_order, parent_id ) 
-VALUES (N'로그인방식', 1, 1, N'user_group', 10, 1);
+VALUES (N'로그인방식', 1, 1, N'account_platform', 10, 1);
 SET @id = @@IDENTITY;
   -- 로그인방식 > 사이트로그인
   INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, is_default ) 
@@ -352,3 +351,33 @@ INSERT CODE_GROUPS ( group_name, created_by, modified_by, group_value, display_o
 VALUES (N'사용자관리', 1, 1, N'USR002', 2, 2);
 SET @id = @@IDENTITY;
 
+
+/** 위에 까지 실행 후 실행 **/
+-- 등록된 사용자 group 설정 (system)
+INSERT USER_GROUPS (user_id, group_code)
+SELECT user_id, dbo.ufn_getCodeID('user_group', 'system')
+FROM USERS
+WHERE usable = 1
+
+-- 로그인 계정 설정
+-- 1, system
+-- 2, admin
+INSERT USER_ACCOUNTS (user_id, platform_code, login_id, login_pwd)
+SELECT user_id, dbo.ufn_getCodeID('account_platform', 'home'),
+CASE user_id WHEN 1 THEN 'system' WHEN 2 THEN 'admin' END,
+CONVERT(NVARCHAR(255), HASHBYTES('SHA2_256', CASE user_id WHEN 1 THEN 'system@2019' WHEN 2 THEN 'admin@2019' END), 2)
+FROM USERS
+WHERE usable = 1
+
+/**
+UPDATE USER_ACCOUNTS SET login_pwd = HASHBYTES('SHA2_256', login_pwd)
+
+UPDATE USER_ACCOUNTS SET login_pwd = CONVERT(NVARCHAR(255), HASHBYTES('SHA2_256', CASE user_id WHEN 1 THEN 'system@2019' WHEN 2 THEN 'admin@2019' END), 2)
+**/
+
+SELECT * FROM USER_ACCOUNTS
+WHERE login_id = 'system'
+AND login_pwd = CONVERT(NVARCHAR(255), HASHBYTES('SHA2_256', 'system@2019'), 2)
+
+SELECT CONVERT(NVARCHAR(255), HASHBYTES('SHA2_256', 'system@2019'), 2),
+HASHBYTES('SHA2_256', 'system@2019')
