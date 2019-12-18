@@ -49,7 +49,7 @@ CREATE TABLE CODES (
   code_name NVARCHAR(255) NOT NULL,
   display_order TINYINT NOT NULL,
   usable TINYINT NOT NULL CONSTRAINT df_Codes_usable DEFAULT (1),
-  active TINYINT NOT NULL CONSTRAINT df_Codes_active DEFAULT (1),
+  visible TINYINT NOT NULL CONSTRAINT df_Codes_visible DEFAULT (1),
   is_default TINYINT NOT NULL CONSTRAINT df_Codes_isDefault DEFAULT (0),
   created_at DATETIME NOT NULL CONSTRAINT df_Codes_createdAt DEFAULT (GETDATE()),
   created_by INT NOT NULL,

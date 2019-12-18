@@ -127,13 +127,13 @@ SET @id = @@IDENTITY;
   INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order ) 
   VALUES ( @id, N'SHA256', 1, 1, N'SHA256', 1);
   -- 암호화종류 > SHA512
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'SHA512', 1, 1, N'SHA512', 2, 0);
   -- 암호화종류 > SEED
   INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order ) 
   VALUES ( @id, N'SEED', 1, 1, N'SEED', 3);
   -- 암호화종류 > SEED256
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'SEED256', 1, 1, N'SEED256', 3, 0);
 
 -- 시스템코드 > 사용자그룹
@@ -158,16 +158,16 @@ SET @id = @@IDENTITY;
   INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, is_default ) 
   VALUES ( @id, N'사이트로그인', 1, 1, N'HOME', 1, 1);
   -- 로그인방식 > 페이스북
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'페이스북', 1, 1, N'FACEBOOK', 2, 0);
   -- 로그인방식 > 구글
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'구글', 1, 1, N'GOOGLE', 3, 0);
   -- 로그인방식 > 카카오
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'카카오', 1, 1, N'KAKAO', 4, 0);
   -- 로그인방식 > 네이버
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'네이버', 1, 1, N'NAVER', 5, 0);
 
 -- 시스템코드 > 은행
@@ -175,7 +175,7 @@ INSERT CODE_GROUPS ( group_name, created_by, modified_by, group_value, display_o
 VALUES (N'은행', 1, 1, N'bank', 11, 1, 'name');
 SET @id = @@IDENTITY;
   -- 은행 > 한국은행
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'한국은행', 1, 1, N'001', 1, 0);
   -- 은행 > 산업은행
   INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order ) 
@@ -190,7 +190,7 @@ SET @id = @@IDENTITY;
   INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order ) 
   VALUES ( @id, N'수협은행', 1, 1, N'007', 5);
   -- 은행 > 수출입은행
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'수출입은행', 1, 1, N'008', 6, 0);
   -- 은행 > 농협은행
   INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order ) 
@@ -235,46 +235,46 @@ SET @id = @@IDENTITY;
   INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order ) 
   VALUES ( @id, N'저축은행', 1, 1, N'050', 20);
   -- 은행 > 모건스탠리은행
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'모건스탠리은행', 1, 1, N'052', 21, 0);
   -- 은행 > HSBC은행
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'HSBC은행', 1, 1, N'054', 22, 0);
   -- 은행 > 도이치은행
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'도이치은행', 1, 1, N'055', 23, 0);
   -- 은행 > 제이피모간체이스은행
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'제이피모간체이스은행', 1, 1, N'057', 24, 0);
   -- 은행 > 미즈호은행
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'미즈호은행', 1, 1, N'058', 25, 0);
   -- 은행 > 엠유에프지은행(MFUG)
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'엠유에프지은행', 1, 1, N'059', 26, 0);
   -- 은행 > BOA은행
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'BOA은행', 1, 1, N'060', 27, 0);
   -- 은행 > 비엔피파리바은행
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'비엔피파리바은행', 1, 1, N'061', 28, 0);
   -- 은행 > 중국공상은행
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'중국공상은행', 1, 1, N'062', 29, 0);
   -- 은행 > 중국은행
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'중국은행', 1, 1, N'063', 30, 0);
   -- 은행 > 산림조합중앙회
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'산림조합중앙회', 1, 1, N'064', 31, 0);
   -- 은행 > 대화은행
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'대화은행', 1, 1, N'065', 32, 0);
   -- 은행 > 교통은행
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'교통은행', 1, 1, N'066', 33, 0);
   -- 은행 > 중국건설은행
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'중국건설은행', 1, 1, N'067', 34, 0);
   -- 은행 > 우체국
   INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order ) 
@@ -318,28 +318,28 @@ INSERT CODE_GROUPS ( group_name, created_by, modified_by, group_value, display_o
 VALUES (N'결제PG', 1, 1, N'pay_pg', 12, 1);
 SET @id = @@IDENTITY;
   -- 결제PG > KCP
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'KCP', 1, 1, N'KCP', 1, 0);
   -- 결제PG > KG이니시스
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'KG이니시스', 1, 1, N'INICIS', 2, 0);
   -- 결제PG > LGU+
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'LGU+', 1, 1, N'LG', 3, 0);
   -- 결제PG > 모빌리언스
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'모빌리언스', 1, 1, N'MOBILIANS', 4, 0);
   -- 결제PG > NICE
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'NICE', 1, 1, N'NICE', 5, 0);
   -- 결제PG > 다날
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'다날', 1, 1, N'DANAL', 6, 0);
   -- 결제PG > 다우페이
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'다우페이', 1, 1, N'DAOU', 7, 0);
   -- 결제PG > KSNET
-  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, active ) 
+  INSERT CODES ( group_id, code_name, created_by, modified_by, code_value, display_order, visible ) 
   VALUES ( @id, N'KSNET', 1, 1, N'KSNET', 8, 0);
 
 
