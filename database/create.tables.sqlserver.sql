@@ -1,6 +1,7 @@
 USE DOTWARE
 GO
 
+SELECT * FROM sys.tables
 
 IF EXISTS (SELECT object_id FROM sys.tables WHERE name = 'USER_GROUPS' AND [type] = 'U')
   DROP TABLE USER_GROUPS
@@ -19,7 +20,7 @@ IF EXISTS (SELECT object_id FROM sys.tables WHERE name = 'USERS' AND [type] = 'U
 
 
 CREATE TABLE CODE_GROUPS (
-  group_id INT NOT NULL IDENTITY,
+  group_id INT NOT NULL IDENTITY(0, 1),
   group_name NVARCHAR(255) NOT NULL,
   display_order TINYINT NOT NULL,
   usable TINYINT NOT NULL CONSTRAINT df_CodeGroups_usable DEFAULT (1),
@@ -48,6 +49,7 @@ CREATE TABLE CODES (
   code_name NVARCHAR(255) NOT NULL,
   display_order TINYINT NOT NULL,
   usable TINYINT NOT NULL CONSTRAINT df_Codes_usable DEFAULT (1),
+  active TINYINT NOT NULL CONSTRAINT df_Codes_active DEFAULT (1),
   is_default TINYINT NOT NULL CONSTRAINT df_Codes_isDefault DEFAULT (0),
   created_at DATETIME NOT NULL CONSTRAINT df_Codes_createdAt DEFAULT (GETDATE()),
   created_by INT NOT NULL,
