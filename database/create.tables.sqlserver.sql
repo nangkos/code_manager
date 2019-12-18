@@ -88,6 +88,10 @@ CREATE TABLE USER_GROUPS (
 ) ON [PRIMARY]
 GO
 
+
+CREATE INDEX ix_UserGroups_user ON USER_ACCOUNTS(user_id, usable) ON [PRIMARY]
+GO
+
 CREATE TABLE USER_ACCOUNTS (
   account_id INT NOT NULL IDENTITY,
   user_id INT NOT NULL,
@@ -98,6 +102,12 @@ CREATE TABLE USER_ACCOUNTS (
   is_default TINYINT NOT NULL CONSTRAINT df_UserAccounts_isDefault DEFAULT (1),
   CONSTRAINT pk_UserAccounts PRIMARY KEY (account_id) ON [PRIMARY]
 ) ON [PRIMARY]
+GO
+
+CREATE INDEX ix_UserAccounts_login ON USER_ACCOUNTS(platform_code, login_id, usable) ON [PRIMARY]
+GO
+
+CREATE INDEX ix_UserAccounts_user ON USER_ACCOUNTS (user_id) ON [PRIMARY]
 GO
 
 /**
